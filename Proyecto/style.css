@@ -1,3 +1,6 @@
+/* Importar Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,16 +8,34 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+    border-bottom: 3px solid #ff6b8b;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    background: linear-gradient(45deg, #ff6b8b, #ffa726);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 3px 3px 0px rgba(255, 107, 139, 0.2);
+    margin: 0;
+}
+
+/* NAV */
 nav ul {
     display: flex;
     list-style: none;
-    justify-content: center;
     gap: 15px;
     padding: 0;
-    margin-top: 1.5rem;
-}
-
-nav li {
     margin: 0;
 }
 
@@ -25,37 +46,193 @@ nav a {
     padding: 12px 25px;
     border-radius: 25px;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
     box-shadow: 0 3px 10px rgba(255, 107, 139, 0.3);
+    white-space: nowrap;
 }
 
 nav a:hover {
-    background: #d32f2f;
-    color: white;
-    border-style: solid;
-    transform: scale(1.1);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 107, 139, 0.4);
+    filter: brightness(1.1);
 }
 
-header {
+/* GALERÍA DE PRODUCTOS */
+.galeria-productos {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: pink;
+    gap: 30px;
+    overflow-x: auto;
+    padding: 40px 20px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    margin: 20px 0;
 }
 
- header h1 {
-            /* Elige una de estas fuentes */
-            font-family: 'Pacifico', cursive;
-            /* font-family: 'Dancing Script', cursive; */
-            /* font-family: 'Chewy', cursive; */
-            /* font-family: 'Lobster', cursive; */
-            
-            font-size: 3.5rem;
-            color: #ff6b8b;
-            text-shadow: 3px 3px 0px rgba(255, 107, 139, 0.3);
-            margin: 0;
-        }
+/* FIGURE - MÁS GRANDE */
+.galeria-productos figure {
+    flex: 0 0 auto;
+    width: 450px;
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    margin: 0;
+    position: relative;
+}
 
+.galeria-productos figure:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
 
+/* IMÁGENES - MÁS GRANDES */
+.galeria-productos img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* FIGCAPTION - NOMBRE DEL PRODUCTO */
+.galeria-productos figcaption {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* CONTENEDOR PARA PRECIO Y BOTÓN */
+.precio-boton {
+    margin-top: 15px;
+}
+
+/* PRECIO */
+.galeria-productos figure::after {
+    content: "$25.000";
+    display: block;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ff6b8b;
+    margin-bottom: 15px;
+}
+
+/* PRECIOS INDIVIDUALES PARA CADA PRODUCTO */
+.galeria-productos figure:nth-child(1)::after {
+    content: "$5.000"; /* Tres Leches */
+}
+
+.galeria-productos figure:nth-child(2)::after {
+    content: "$35.000"; /* Red Velvet */
+}
+
+.galeria-productos figure:nth-child(3)::after {
+    content: "$6.000"; /* Chocolate */
+}
+
+.galeria-productos figure:nth-child(4)::after {
+    content: "$30.000"; /* Zanahoria */
+}
+
+/* BOTÓN AGREGAR AL CARRITO - AHORA DEBAJO DEL PRECIO */
+.btn-carrito {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, #ff6b8b, #ffa726);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(255, 107, 139, 0.3);
+    margin-top: 10px;
+}
+
+.btn-carrito:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 107, 139, 0.4);
+    filter: brightness(1.1);
+}
+
+/* SCROLLBAR PERSONALIZADA */
+.galeria-productos::-webkit-scrollbar {
+    height: 8px;
+}
+
+.galeria-productos::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.galeria-productos::-webkit-scrollbar-thumb {
+    background: #ff6b8b;
+    border-radius: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .galeria-productos figure {
+        width: 300px;
+    }
+    
+    .galeria-productos img {
+        height: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        gap: 10px;
+    }
+    
+    nav a {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .galeria-productos {
+        padding: 30px 15px;
+        gap: 25px;
+    }
+    
+    .galeria-productos figure {
+        width: 280px;
+        padding: 20px;
+    }
+    
+    .galeria-productos img {
+        height: 200px;
+    }
+    
+    .galeria-productos figcaption {
+        font-size: 1.2rem;
+    }
+    
+    .galeria-productos figure::after {
+        font-size: 1.4rem;
+    }
+    
+    .btn-carrito {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
