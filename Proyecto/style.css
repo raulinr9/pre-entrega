@@ -28,6 +28,27 @@ header h1 {
     color: transparent;
     text-shadow: 3px 3px 0px rgba(255, 107, 139, 0.2);
     margin: 0;
+    transition: all 0.3s ease; /* Agrega esta línea */
+}
+
+header h1:hover {
+    transform: scale(1.05);
+    text-shadow: 5px 5px 0px rgba(255, 107, 139, 0.3);
+    cursor: pointer;
+}
+
+.header-logo img {
+    width: 160px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 25%;
+    box-shadow: 0 3px 15px rgba(255, 107, 139, 0.3);
+    transition: all 0.3s ease;
+}
+
+.header-logo img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 20px rgba(255, 107, 139, 0.5);
 }
 
 /* NAV */
@@ -72,7 +93,7 @@ nav a:hover {
 /* FIGURE - MÁS GRANDE */
 .galeria-productos figure {
     flex: 0 0 auto;
-    width: 450px;
+    width: 600px;
     background: white;
     border-radius: 15px;
     padding: 25px;
