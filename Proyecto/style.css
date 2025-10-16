@@ -17,6 +17,11 @@ header {
     background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
     border-bottom: 3px solid #ff6b8b;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-image: url('./imagenes/fondoHeader.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative; 
 }
 
 header h1 {
@@ -81,19 +86,15 @@ nav a:hover {
 
 /* GALERÍA DE PRODUCTOS */
 .galeria-productos {
-    display: flex;
-    gap: 30px;
-    overflow-x: auto;
-    padding: 40px 20px;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    display: grid; /* Le decimos que use el sistema de cuadrícula */
+    grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas de igual tamaño */
+    gap: 30px; /* Mantenemos el espacio entre tarjetas */
+    padding: 40px; /* Un poco de padding alrededor de toda la galería */
     margin: 20px 0;
 }
 
 /* FIGURE - MÁS GRANDE */
 .galeria-productos figure {
-    flex: 0 0 auto;
-    width: 600px;
     background: white;
     border-radius: 15px;
     padding: 25px;
@@ -102,6 +103,7 @@ nav a:hover {
     transition: all 0.3s ease;
     margin: 0;
     position: relative;
+    width: 100%; /* Hacemos que la tarjeta ocupe el 100% de su columna */
 }
 
 .galeria-productos figure:hover {
@@ -160,6 +162,14 @@ nav a:hover {
     content: "$30.000"; /* Zanahoria */
 }
 
+.galeria-productos figure:nth-child(5)::after {
+    content: "$40.000"; /* Torta de Chocolate de Cumpleaños */
+}
+
+.galeria-productos figure:nth-child(6)::after {
+    content: "$45.000"; /* Torta de Chocolate de Cumpleaños dos */
+}
+
 /* BOTÓN AGREGAR AL CARRITO - AHORA DEBAJO DEL PRECIO */
 .btn-carrito {
     display: block;
@@ -199,7 +209,14 @@ nav a:hover {
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+@media (max-width: 992px) { /* Para tablets */
+    .galeria-productos {
+        grid-template-columns: repeat(2, 1fr); /* Cambiamos a 2 columnas */
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 768px) { /* Para tablets más pequeñas y móviles grandes */
     header {
         flex-direction: column;
         gap: 20px;
@@ -210,17 +227,18 @@ nav a:hover {
         flex-wrap: wrap;
         justify-content: center;
     }
-    
-    .galeria-productos figure {
-        width: 300px;
-    }
-    
-    .galeria-productos img {
-        height: 220px;
-    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) { /* Para móviles */
+    .galeria-productos {
+        grid-template-columns: 1fr; /* Cambiamos a 1 sola columna */
+    }
+
+    .galeria-productos img { /* <-- ¡Aquí! */
+        height: auto; /* <-- Le decimos que la altura sea automática */
+        object-fit: cover; /* Mantenemos cover, pero ya no recortará */
+    }
+
     nav ul {
         gap: 10px;
     }
@@ -228,32 +246,5 @@ nav a:hover {
     nav a {
         padding: 8px 16px;
         font-size: 0.85rem;
-    }
-    
-    .galeria-productos {
-        padding: 30px 15px;
-        gap: 25px;
-    }
-    
-    .galeria-productos figure {
-        width: 280px;
-        padding: 20px;
-    }
-    
-    .galeria-productos img {
-        height: 200px;
-    }
-    
-    .galeria-productos figcaption {
-        font-size: 1.2rem;
-    }
-    
-    .galeria-productos figure::after {
-        font-size: 1.4rem;
-    }
-    
-    .btn-carrito {
-        padding: 10px 20px;
-        font-size: 0.9rem;
     }
 }
